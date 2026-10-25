@@ -82,3 +82,30 @@ def test_threshold_ties_sensitivity():
     p = np.array([0.2, 0.2, 0.8, 0.4])
     cutoff = sensitivity_threshold(y, p, 0.9)
     assert cutoff == 0.2 and np.mean(p[y == 1] >= cutoff) >= 0.9
+
+
+def test_calibration_audit_accepts_float32_roundoff():
+    from sklearn.linear_model import LogisticRegression
+
+    from predictx.evaluation import audit_sigmoid_calibration
+
+    raw = np.array([-3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0]).reshape(-1, 1)
+    labels = np.array([0, 0, 1, 0, 1, 1, 1, 1])
+    reference = LogisticRegression(C=1.0, max_iter=1000).fit(raw, labels)
+    reference.intercept_ += np.finfo(np.float32).eps / 4
+    result = audit_sigmoid_calibration(reference, raw, labels)
+    assert result["probability_max_absolute_delta"] < 1e-7
+    assert result["saved_gradient_infinity_norm"] <= reference.tol
+
+
+def test_calibration_audit_rejects_inconsistent_fitted_parameters():
+    from sklearn.linear_model import LogisticRegression
+
+    from predictx.evaluation import audit_sigmoid_calibration
+
+    raw = np.array([-3.0, -2.0, -1.0, 0.0, 1.0, 2.0, 3.0, 4.0]).reshape(-1, 1)
+    labels = np.array([0, 0, 1, 0, 1, 1, 1, 1])
+    reference = LogisticRegression(C=1.0, max_iter=1000).fit(raw, labels)
+    reference.intercept_ += 0.05
+    with pytest.raises(AssertionError, match="Calibration gradient"):
+        audit_sigmoid_calibration(reference, raw, labels)

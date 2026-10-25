@@ -9,7 +9,6 @@ import numpy as np
 import pandas as pd
 from sklearn.calibration import calibration_curve
 from sklearn.impute import SimpleImputer
-from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import ConfusionMatrixDisplay, RocCurveDisplay
 from sklearn.pipeline import make_pipeline
 from sklearn.preprocessing import StandardScaler
@@ -17,7 +16,7 @@ from sklearn.preprocessing import StandardScaler
 from predictx.breast_data import breast_senegal
 from predictx.cohort_runtime import LOADERS_ACTIVE, canonical_frame
 from predictx.data import ROOT, derived
-from predictx.evaluation import assert_disjoint, bootstrap, metrics
+from predictx.evaluation import assert_disjoint, audit_sigmoid_calibration, bootstrap, metrics
 from predictx.inference import assess, load_model, registry
 from predictx.research_metrics import coverage_metrics, thresholds
 from predictx.runtime import scalar_scores
@@ -26,11 +25,7 @@ from predictx.runtime import scalar_scores
 def verify_calibration(bundle, cohort, source, indices, task):
     observed = indices[np.isfinite(cohort.y[task].iloc[indices].to_numpy())]
     raw = scalar_scores(bundle.model, bundle.preprocessor.transform(source.iloc[observed]))
-    fitted = LogisticRegression(C=1.0, max_iter=1000).fit(raw, cohort.y[task].iloc[observed])
-    np.testing.assert_allclose(fitted.coef_, bundle.calibrator.coef_, rtol=1e-9, atol=1e-9)
-    np.testing.assert_allclose(
-        fitted.intercept_, bundle.calibrator.intercept_, rtol=1e-9, atol=1e-9
-    )
+    return audit_sigmoid_calibration(bundle.calibrator, raw, cohort.y[task].iloc[observed])
 
 
 def verify_candidate_selection(output: Path) -> None:
@@ -96,7 +91,9 @@ def evaluate_models(output: Path) -> pd.DataFrame:
             (bundle.preprocessor.hi, train.quantile(0.995).to_numpy()),
         ]:
             np.testing.assert_allclose(actual, expected, rtol=1e-12, atol=1e-12)
-        verify_calibration(bundle, cohort, source, parts["calibration"], cfg["task"])
+        calibration_audit = verify_calibration(
+            bundle, cohort, source, parts["calibration"], cfg["task"]
+        )
         raw = breast_senegal(False).X if disease == "breast_cancer" else cohort.X
         canonical, diagnostics = canonical_frame(cohort, raw=raw)
         frame = derived(canonical)
@@ -179,6 +176,7 @@ def evaluate_models(output: Path) -> pd.DataFrame:
                 ),
                 "training_preprocessing_verified": True,
                 "calibration_refit_verified": True,
+                "calibration_audit": calibration_audit,
                 "runtime_parity_verified": True,
             }
         )

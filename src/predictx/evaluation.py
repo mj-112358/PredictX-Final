@@ -1,4 +1,7 @@
 import numpy as np
+from scipy.special import expit
+from sklearn.base import clone
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import (
     average_precision_score,
     brier_score_loss,
@@ -92,3 +95,43 @@ def assert_disjoint(ids, parts):
         raise ValueError("Partition leakage")
     if sum(map(len, sets)) != len(ids):
         raise ValueError("Partition coverage mismatch")
+
+
+def audit_sigmoid_calibration(
+    reference: LogisticRegression, raw: np.ndarray, labels: np.ndarray
+) -> dict[str, float]:
+    """Verify sigmoid reconstruction against its fitted objective and score contract."""
+    if (
+        reference.solver != "lbfgs"
+        or reference.penalty != "l2"
+        or reference.class_weight is not None
+        or not reference.fit_intercept
+    ):
+        raise ValueError("Calibration audit requires unweighted L2 L-BFGS with an intercept")
+    np.testing.assert_array_equal(reference.classes_, [0, 1])
+    x = np.asarray(raw, dtype=float).reshape(-1, 1)
+    y = np.asarray(labels, dtype=float)
+    fitted = clone(reference).fit(x, y)
+    gradients = []
+    for model in [reference, fitted]:
+        residual = expit(x @ model.coef_[0] + model.intercept_[0]) - y
+        gradient = np.r_[x.T @ residual + model.coef_[0] / model.C, residual.sum()] / len(y)
+        norm = float(np.max(np.abs(gradient)))
+        if norm > model.tol:
+            raise AssertionError(
+                f"Calibration gradient {norm} exceeds fitted solver tolerance {model.tol}"
+            )
+        gradients.append(norm)
+    original = reference.predict_proba(x)
+    reconstructed = fitted.predict_proba(x)
+    np.testing.assert_allclose(reconstructed, original, rtol=1e-6, atol=1e-7)
+    return {
+        "coefficient_max_absolute_delta": float(np.max(np.abs(fitted.coef_ - reference.coef_))),
+        "intercept_max_absolute_delta": float(
+            np.max(np.abs(fitted.intercept_ - reference.intercept_))
+        ),
+        "probability_max_absolute_delta": float(np.max(np.abs(reconstructed - original))),
+        "saved_gradient_infinity_norm": gradients[0],
+        "refitted_gradient_infinity_norm": gradients[1],
+        "fitted_solver_tolerance": float(reference.tol),
+    }

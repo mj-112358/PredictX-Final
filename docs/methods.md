@@ -18,6 +18,8 @@ The serialized MLP class `predictx.models.SharedNetwork` retains the serializati
 
 Additional liver and cardiovascular comparisons use three outer training folds (seed 2027), two inner folds for outer-fold selection and three-fold full-training selection (seed 2026). Candidate families include logistic regression, boosting, random forests and a soft-voting ensemble. Preprocessing is fitted within each training fold. Final candidates use the original calibration partition and calibrated validation loss. Replacement requires a relative validation-loss reduction greater than 1%; both retained baseline models satisfy the recorded selection procedure. Candidate configurations, validation predictions, held-out predictions and checkpoints remain in `results/refinement`.
 
+Calibration reconstruction is checked against the mean regularized logistic-loss gradient at the stored L-BFGS convergence tolerance and the existing inference score-parity contract (relative 1e-6, absolute 1e-7). The audit records coefficient, intercept and probability differences. This accommodates platform-dependent float32 neural scores while retaining artifact digests and saved-prediction comparisons.
+
 ## Operating points and evaluation
 
 Validation records satisfying the input contract determine Youden, sensitivity-90%, specificity-80% and illustrative FN:FP cost 4:1 operating points. The registry uses the validation Youden threshold. Binary reporting requires validation sensitivity ≥0.8 and specificity ≥0.6; liver and breast assessments use ranking mode under this rule.
