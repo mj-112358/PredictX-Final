@@ -1,0 +1,30 @@
+name: Research verification
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+          cache-dependency-path: requirements.lock.txt
+      - name: Install pinned dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -r requirements.lock.txt
+          python -m pip install --no-deps -e '.[test]'
+      - name: Verify research suite
+        run: python -m pytest -q
+      - name: Check source formatting
+        run: |
+          python -m ruff check src scripts tests demo
+          python -m ruff format --check src scripts tests demo
