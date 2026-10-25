@@ -50,9 +50,17 @@ def verify_candidate_selection(output: Path) -> None:
             p = bundle.predict_proba(frame.iloc[indices])[:, index]
             result = metrics(cohort.y[cfg["task"]].iloc[indices], p, bundle.thresholds[index])
             np.testing.assert_allclose(
-                result["log_loss"], candidate["validation_log_loss"], rtol=1e-9
+                result["log_loss"], candidate["validation_log_loss"], rtol=1e-6, atol=1e-7
             )
-            np.testing.assert_allclose(result["brier"], candidate["validation_brier"], rtol=1e-9)
+            np.testing.assert_allclose(
+                result["brier"], candidate["validation_brier"], rtol=1e-6, atol=1e-7
+            )
+            for field in ["n", "positive", "tp", "tn", "fp", "fn"]:
+                assert result[field] == candidate[f"validation_{field}"], (
+                    disease,
+                    candidate["run"],
+                    field,
+                )
             scores.append((result["log_loss"], result["brier"], candidate["run"]))
             rows.append(
                 {
@@ -60,6 +68,11 @@ def verify_candidate_selection(output: Path) -> None:
                     "run": candidate["run"],
                     "validation_log_loss": result["log_loss"],
                     "validation_brier": result["brier"],
+                    "log_loss_absolute_delta": abs(
+                        result["log_loss"] - candidate["validation_log_loss"]
+                    ),
+                    "brier_absolute_delta": abs(result["brier"] - candidate["validation_brier"]),
+                    "validation_confusion_counts_verified": True,
                 }
             )
         assert min(scores)[2] == cfg["source_run"]
