@@ -1,0 +1,71 @@
+{
+  "dataset": "nhanes",
+  "task": "cvd_report",
+  "essential": [
+    "hdl",
+    "total_cholesterol",
+    "sex"
+  ],
+  "min_age": 20,
+  "sex": null,
+  "artifact": "results/deployed/cardiovascular.joblib",
+  "sha256": "bb0c225f8f1bff432e6eef3d58c5431be4db0792a4160b4c32463745c4a82ba6",
+  "preprocessing_signature": "09c452f2fb65806e1b536dacc94d01cf",
+  "features": [
+    "age",
+    "sex",
+    "random_glucose",
+    "hba1c",
+    "creatinine",
+    "bun",
+    "uric_acid",
+    "alt",
+    "ast",
+    "alp",
+    "ggt",
+    "bilirubin",
+    "albumin",
+    "total_protein",
+    "platelets",
+    "wbc",
+    "neutrophils",
+    "lymphocytes",
+    "monocytes",
+    "rbc",
+    "hemoglobin",
+    "hematocrit",
+    "hdl",
+    "total_cholesterol",
+    "urine_acr"
+  ],
+  "architecture": "logistic",
+  "source_run": "nhanes_logistic_s2026_f1_d0_m1",
+  "version": "0.4.0",
+  "definition": "Any MCQ160C/E/F=1 (ever CHD/MI/stroke), negative only if all three=2. Self-reported prevalent cardiovascular history.",
+  "validation_status": "exploratory_internal_retrospective_classification",
+  "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+  "evidence_limitations": [
+    "Retrospective source-cohort classification; test set previously inspected; no population screening calibration, prospective or incident-risk validation."
+  ],
+  "source_manifests": [
+    "data/raw/manifest.json"
+  ],
+  "training_coverage_q05": 0.43478260869565216,
+  "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+  "essential_rationale": "Retain existing disease-specific anchor measurements and source population restriction.",
+  "feature_engine_version": "0.3.0",
+  "outcome_label": "Self-reported cardiovascular history (NHANES CHD/MI/stroke)",
+  "longitudinal_outcome": false,
+  "clinical_screening_validated": false,
+  "operating_point_method": "validation_youden",
+  "operating_threshold": 0.10095017356347237,
+  "operating_thresholds": {
+    "sensitivity90": 0.0656167391670322,
+    "youden": 0.10095017356347237,
+    "cost_fn4_fp1": 0.17451158912454975,
+    "specificity80": 0.1512179011943394
+  },
+  "threshold_selection_partition": "original_validation_eligible_only",
+  "threshold_validation_n": 982,
+  "reporting_mode": "research_threshold"
+}

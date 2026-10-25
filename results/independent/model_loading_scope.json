@@ -1,0 +1,251 @@
+{
+  "model_registry": {
+    "diabetes": {
+      "dataset": "nhanes",
+      "task": "diabetes_report",
+      "essential": [
+        "hba1c",
+        "random_glucose",
+        "sex"
+      ],
+      "min_age": 20,
+      "sex": null,
+      "artifact": "results/deployed/diabetes.joblib",
+      "sha256": "71b50ebdac241a7f9f428e569d8c2dcf1c878323fc5dd25966c9e048196b7163",
+      "preprocessing_signature": "09c452f2fb65806e1b536dacc94d01cf",
+      "features": [
+        "age",
+        "sex",
+        "random_glucose",
+        "hba1c",
+        "creatinine",
+        "bun",
+        "uric_acid",
+        "alt",
+        "ast",
+        "alp",
+        "ggt",
+        "bilirubin",
+        "albumin",
+        "total_protein",
+        "platelets",
+        "wbc",
+        "neutrophils",
+        "lymphocytes",
+        "monocytes",
+        "rbc",
+        "hemoglobin",
+        "hematocrit",
+        "hdl",
+        "total_cholesterol",
+        "urine_acr"
+      ],
+      "architecture": "boosted",
+      "source_run": "nhanes_boosted_s2026_f1_d0_m1",
+      "minimum_coverage": 0.7,
+      "version": "0.3.0",
+      "definition": "DIQ010 1 versus 2, borderline/refused/unknown excluded. Self-reported diagnosed diabetes, not type-2-specific or future onset.",
+      "validation_status": "internal_research_only",
+      "gate_status": "design safeguards, not clinically validated reliability thresholds",
+      "evidence_limitations": [
+        "Internal retrospective classification; not validated population screening or incident risk."
+      ],
+      "source_manifests": [
+        "data/raw/manifest.json"
+      ]
+    },
+    "kidney": {
+      "dataset": "ckd",
+      "task": "ckd_class",
+      "essential": [
+        "creatinine",
+        "urea",
+        "urine_specific_gravity",
+        "urine_albumin_ordinal"
+      ],
+      "min_age": 18,
+      "sex": null,
+      "artifact": "results/deployed/kidney.joblib",
+      "sha256": "4704b8a47addee85697ab764847e825736adf1c2290b97c2c74fd5dc172446eb",
+      "preprocessing_signature": "f07550075cf1e525963073280139a128",
+      "features": [
+        "age",
+        "random_glucose",
+        "urea",
+        "creatinine",
+        "sodium",
+        "potassium",
+        "hemoglobin",
+        "hematocrit",
+        "wbc_cells",
+        "rbc",
+        "urine_specific_gravity",
+        "urine_albumin_ordinal",
+        "urine_glucose_ordinal"
+      ],
+      "architecture": "boosted",
+      "source_run": "ckd_boosted_s2026_f1_d0_m1",
+      "minimum_coverage": 0.7,
+      "version": "0.3.0",
+      "definition": "UCI hospital CKD class. No adjudicated chronicity or stage; includes biomarkers used in diagnosis. Excludes comorbidity labels, symptoms and disease-history features.",
+      "validation_status": "internal_research_only",
+      "gate_status": "design safeguards, not clinically validated reliability thresholds",
+      "evidence_limitations": [
+        "Internal retrospective classification; not validated population screening or incident risk."
+      ],
+      "source_manifests": [
+        "data/raw/manifest.json"
+      ]
+    },
+    "liver": {
+      "dataset": "ilpd",
+      "task": "liver_class",
+      "essential": [
+        "alt",
+        "ast",
+        "bilirubin",
+        "albumin"
+      ],
+      "min_age": 18,
+      "sex": null,
+      "artifact": "results/deployed/liver.joblib",
+      "sha256": "6315bb92ce36871608e7753e5c15ad861e4292b95e460a6d381143fc81d80e47",
+      "preprocessing_signature": "de2e65a01ed0371fd59d05ef0f3bf1ba",
+      "features": [
+        "age",
+        "sex",
+        "bilirubin",
+        "direct_bilirubin",
+        "alp",
+        "alt",
+        "ast",
+        "total_protein",
+        "albumin"
+      ],
+      "architecture": "independent",
+      "source_run": "ilpd_independent_s2026_f1_d0_m1",
+      "minimum_coverage": 0.7,
+      "version": "0.3.0",
+      "definition": "Selector 1: liver patient; 2: non-liver patient. Heterogeneous disease, no fibrosis stage.",
+      "validation_status": "internal_research_only",
+      "gate_status": "design safeguards, not clinically validated reliability thresholds",
+      "evidence_limitations": [
+        "Internal retrospective classification; not validated population screening or incident risk."
+      ],
+      "source_manifests": [
+        "data/raw/manifest.json"
+      ]
+    },
+    "cardiovascular": {
+      "dataset": "nhanes",
+      "task": "cvd_report",
+      "essential": [
+        "hdl",
+        "total_cholesterol",
+        "sex"
+      ],
+      "min_age": 20,
+      "sex": null,
+      "artifact": "results/deployed/cardiovascular.joblib",
+      "sha256": "68e9c60f127f838f2a017591ad181091ae04934c9fc1c76692e2f62f8659e3cd",
+      "preprocessing_signature": "09c452f2fb65806e1b536dacc94d01cf",
+      "features": [
+        "age",
+        "sex",
+        "random_glucose",
+        "hba1c",
+        "creatinine",
+        "bun",
+        "uric_acid",
+        "alt",
+        "ast",
+        "alp",
+        "ggt",
+        "bilirubin",
+        "albumin",
+        "total_protein",
+        "platelets",
+        "wbc",
+        "neutrophils",
+        "lymphocytes",
+        "monocytes",
+        "rbc",
+        "hemoglobin",
+        "hematocrit",
+        "hdl",
+        "total_cholesterol",
+        "urine_acr"
+      ],
+      "architecture": "logistic",
+      "source_run": "nhanes_logistic_s2026_f1_d0_m1",
+      "minimum_coverage": 0.7,
+      "version": "0.3.0",
+      "definition": "Any MCQ160C/E/F=1 (ever CHD/MI/stroke), negative only if all three=2. Self-reported prevalent cardiovascular history.",
+      "validation_status": "internal_research_only",
+      "gate_status": "design safeguards, not clinically validated reliability thresholds",
+      "evidence_limitations": [
+        "Internal retrospective classification; not validated population screening or incident risk."
+      ],
+      "source_manifests": [
+        "data/raw/manifest.json"
+      ]
+    },
+    "breast_cancer": {
+      "dataset": "breast_senegal_qc",
+      "task": "breast_cancer",
+      "essential": [
+        "wbc",
+        "neutrophils",
+        "lymphocytes",
+        "platelets"
+      ],
+      "min_age": 18,
+      "sex": "female",
+      "artifact": "results/deployed/breast_cancer.joblib",
+      "sha256": "1a5352ad360dc2638c96b0d2e454f65ae8c844e119ba6fafb8ba22fc3541a424",
+      "preprocessing_signature": "a0461d260e7a5926a0b5ca46cfc63750",
+      "features": [
+        "age",
+        "crp",
+        "rbc",
+        "hemoglobin",
+        "hematocrit",
+        "mcv",
+        "mch",
+        "mchc",
+        "platelets",
+        "wbc",
+        "neutrophils",
+        "lymphocytes",
+        "monocytes",
+        "eosinophils",
+        "basophils",
+        "nlr",
+        "plr",
+        "mlr"
+      ],
+      "architecture": "boosted",
+      "source_run": "breast_senegal_qc_boosted_s2026_f1_d1_m1",
+      "minimum_coverage": 0.7,
+      "version": "0.3.0",
+      "definition": "Pretreatment breast cancer (40 TNBC + 40 hormone-dependent cases) versus 40 healthy women, Senegal; clinically diagnosed case-control classification, not population screening.",
+      "validation_status": "internal_research_only",
+      "gate_status": "design safeguards, not clinically validated reliability thresholds",
+      "evidence_limitations": [
+        "Internal retrospective classification; not validated population screening or incident risk.",
+        "Senegal healthy-control model; exploratory Italy benign-control transport failed. No validated combined CBC/metabolic panel."
+      ],
+      "source_manifests": [
+        "data/raw/breast_manifest.json"
+      ],
+      "source_files": {
+        "breast_senegal_v1.xlsx": "debd3dbc71886edf33b978892570f0cfcd4ba2538770888ba249a8028efb3132"
+      }
+    }
+  },
+  "repetitions": 10,
+  "seed": 2026,
+  "scope": "hash verification plus deserialization with imports and file caches warm; actual five worker processes; local IPC included for separate modes",
+  "mode_order": "randomized within each repetition",
+  "cold_disk": "not measured"
+}

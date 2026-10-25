@@ -1,0 +1,6 @@
+disease,test_n,changed_raw_to_canonical_scores_n,max_absolute_score_delta,scope
+diabetes,1011,0,0.0,raw source component versus shared validity/QC/canonical path; invalid age rows excluded by runtime gates; retained for explicit parity diagnosis
+kidney,80,3,0.0002528136399849723,raw source component versus shared validity/QC/canonical path; invalid age rows excluded by runtime gates; retained for explicit parity diagnosis
+liver,114,0,0.0,raw source component versus shared validity/QC/canonical path; invalid age rows excluded by runtime gates; retained for explicit parity diagnosis
+cardiovascular,1039,0,0.0,raw source component versus shared validity/QC/canonical path; invalid age rows excluded by runtime gates; retained for explicit parity diagnosis
+breast_cancer,24,0,0.0,raw source component versus shared validity/QC/canonical path; invalid age rows excluded by runtime gates; retained for explicit parity diagnosis

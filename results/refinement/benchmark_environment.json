@@ -1,0 +1,112 @@
+{
+  "evidence": "SYNTHETIC_INPUT_EXECUTED_SOFTWARE_NOT_CLINICAL",
+  "platform": "macOS-26.5.2-x86_64-i386-64bit",
+  "machine": "x86_64",
+  "processor": "i386",
+  "logical_cpu_count": 10,
+  "python": "3.12.10 | packaged by conda-forge | (main, Apr 10 2025, 22:18:27) [Clang 18.1.8 ]",
+  "threads": [
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libopenblas",
+      "filepath": "libopenblas64_.0.dylib",
+      "version": "0.3.23.dev",
+      "threading_layer": "pthreads",
+      "architecture": "Nehalem"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libomp",
+      "filepath": "libomp.dylib",
+      "version": null
+    },
+    {
+      "user_api": "blas",
+      "internal_api": "openblas",
+      "num_threads": 1,
+      "prefix": "libopenblas",
+      "filepath": "libopenblas.0.dylib",
+      "version": "0.3.27",
+      "threading_layer": "pthreads",
+      "architecture": "Nehalem"
+    },
+    {
+      "user_api": "openmp",
+      "internal_api": "openmp",
+      "num_threads": 1,
+      "prefix": "libiomp",
+      "filepath": "libiomp5.dylib",
+      "version": null
+    }
+  ],
+  "model_threads": 1,
+  "torch_threads": 1,
+  "gpu_used": false,
+  "affinity": "OS scheduling; CPU affinity not pinned on macOS; no exclusive machine reservation",
+  "warmup_per_mode_per_batch": 5,
+  "randomized_rounds": 8,
+  "repeats_per_round": 3,
+  "batch_sizes": [
+    1,
+    8,
+    32
+  ],
+  "output_equivalence": "every mode/iteration within rtol 1e-6, atol 1e-7 of all five true model scores",
+  "integrated_memory_after_benchmark": {
+    "peak_rss_bytes": 323923968,
+    "current_rss_bytes": 273670144,
+    "current_pss_bytes": null
+  },
+  "five_workers_memory_after_load": [
+    {
+      "peak_rss_bytes": 174481408,
+      "current_rss_bytes": 170868736,
+      "current_pss_bytes": null
+    },
+    {
+      "peak_rss_bytes": 174497792,
+      "current_rss_bytes": 170565632,
+      "current_pss_bytes": null
+    },
+    {
+      "peak_rss_bytes": 324997120,
+      "current_rss_bytes": 320811008,
+      "current_pss_bytes": null
+    },
+    {
+      "peak_rss_bytes": 168484864,
+      "current_rss_bytes": 164712448,
+      "current_pss_bytes": null
+    },
+    {
+      "peak_rss_bytes": 174653440,
+      "current_rss_bytes": 170590208,
+      "current_pss_bytes": null
+    }
+  ],
+  "pss_status": "Linux smaps_rollup when supported; unavailable on this macOS host",
+  "process_cold_start_definition": "fresh interpreter/import/model process; filesystem cache not flushed, process startup order randomized; not disk-cold",
+  "warm_start_definition": "persistent loaded models, 5 warmup batches per mode and size",
+  "independent_optimized_baseline": "full identical endpoint/support/score/threshold/explanation dictionaries rendered; shared ingestion and derivation; per-model vectorized batch transform/prediction; no fitted-transform cache; stronger than five scalar independently reprocessed calls",
+  "integrated_batch_definition": "isolated scalar per-patient API execution; not vectorized across patients",
+  "ipc": "local multiprocessing Pipe includes serialization; no HTTP/network/container or cross-host measurement",
+  "memory_limit": "summed RSS double-counts shared pages; peaks may occur at different times; current PSS unavailable on macOS",
+  "checkpoint_hashes": {
+    "diabetes": "ad4fe86be0bf2ea616efe89488f9b4f5640043053bbf75fb764bf05f6859306f",
+    "kidney": "c637f224a872b2319607dbdf9f97ee067b7b24b4bd18982b6c62c24826681bc9",
+    "liver": "e6046156866e025345a38f2d30ddf5ab1f716fdfa49966bf0bc0554a2e65899d",
+    "cardiovascular": "bb0c225f8f1bff432e6eef3d58c5431be4db0792a4160b4c32463745c4a82ba6",
+    "breast_cancer": "10619ffed23f1c5795ecd18bf7a29a55a0e4b624fa338263308b03c54757ec67"
+  },
+  "hardware_after_run": {
+    "hw.model": "Mac16,12",
+    "machdep.cpu.brand_string": "Apple M4",
+    "hw.physicalcpu": "10",
+    "hw.memsize": "17179869184"
+  },
+  "hardware_note": "Same local host queried after run: Apple M4; Python process reports x86_64; no native ARM benchmark is claimed."
+}

@@ -1,0 +1,7 @@
+round,mode,process_cold_start_ms,summed_peak_rss_bytes,summed_current_pss_bytes
+0,one_process_five_models,2207.10425,323559424,
+0,five_process_one_model_each,2257.308709,1001218048,
+1,five_process_one_model_each,2214.780166,1000833024,
+1,one_process_five_models,1931.545583,324395008,
+2,one_process_five_models,2053.684958,323690496,
+2,five_process_one_model_each,2320.22225,1000103936,

@@ -1,0 +1,5 @@
+data/raw/** -text -diff
+*.joblib -text -diff
+*.docx -text -diff
+*.png -text -diff
+*.pdf -text -diff

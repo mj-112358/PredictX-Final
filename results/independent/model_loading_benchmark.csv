@@ -1,0 +1,4 @@
+mode,median,mean,max
+integrated_reload,51.029313,52.804591900000005,63.031375
+separate_parallel_reload,18.6053745,19.0601958,22.04
+separate_sequential_reload,54.2269165,55.210704,59.389667

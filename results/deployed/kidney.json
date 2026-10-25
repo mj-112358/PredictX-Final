@@ -1,0 +1,58 @@
+{
+  "dataset": "ckd",
+  "task": "ckd_class",
+  "essential": [
+    "creatinine",
+    "urea"
+  ],
+  "min_age": 18,
+  "sex": null,
+  "artifact": "results/deployed/kidney.joblib",
+  "sha256": "c637f224a872b2319607dbdf9f97ee067b7b24b4bd18982b6c62c24826681bc9",
+  "preprocessing_signature": "f07550075cf1e525963073280139a128",
+  "features": [
+    "age",
+    "random_glucose",
+    "urea",
+    "creatinine",
+    "sodium",
+    "potassium",
+    "hemoglobin",
+    "hematocrit",
+    "wbc_cells",
+    "rbc",
+    "urine_specific_gravity",
+    "urine_albumin_ordinal",
+    "urine_glucose_ordinal"
+  ],
+  "architecture": "boosted",
+  "source_run": "ckd_boosted_s2026_f1_d0_m1",
+  "version": "0.4.0",
+  "definition": "UCI hospital CKD class. No adjudicated chronicity or stage; includes biomarkers used in diagnosis. Excludes comorbidity labels, symptoms and disease-history features.",
+  "validation_status": "exploratory_internal_retrospective_classification",
+  "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+  "evidence_limitations": [
+    "Retrospective source-cohort classification; test set previously inspected; no population screening calibration, prospective or incident-risk validation."
+  ],
+  "source_manifests": [
+    "data/raw/manifest.json"
+  ],
+  "training_coverage_q05": 0.4166666666666667,
+  "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+  "essential_rationale": "Require renal blood anchors creatinine and urea; urine variables were missing in training and remain optional under fitted imputation. This does not determine CKD chronicity.",
+  "feature_engine_version": "0.3.0",
+  "outcome_label": "UCI CKD dataset class",
+  "longitudinal_outcome": false,
+  "clinical_screening_validated": false,
+  "operating_point_method": "validation_youden",
+  "operating_threshold": 0.7916023173223775,
+  "operating_thresholds": {
+    "sensitivity90": 0.9998292742493781,
+    "youden": 0.7916023173223775,
+    "cost_fn4_fp1": 0.7916023173223775,
+    "specificity80": 0.016221476383539993
+  },
+  "threshold_selection_partition": "original_validation_eligible_only",
+  "threshold_validation_n": 70,
+  "reporting_mode": "research_threshold"
+}

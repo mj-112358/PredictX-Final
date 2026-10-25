@@ -1,0 +1,11 @@
+{
+  "seed": 2026,
+  "test_fraction": 0.2,
+  "calibration_fraction": 0.2,
+  "validation_fraction": 0.2,
+  "train_fraction": 0.4,
+  "bootstrap_replicates": 500,
+  "sensitivity_development_target": 0.9,
+  "neural_epochs": 120,
+  "status": "exploratory_internal_benchmarks"
+}

@@ -1,0 +1,71 @@
+{
+  "dataset": "nhanes",
+  "task": "diabetes_report",
+  "essential": [
+    "hba1c",
+    "random_glucose",
+    "sex"
+  ],
+  "min_age": 20,
+  "sex": null,
+  "artifact": "results/deployed/diabetes.joblib",
+  "sha256": "ad4fe86be0bf2ea616efe89488f9b4f5640043053bbf75fb764bf05f6859306f",
+  "preprocessing_signature": "09c452f2fb65806e1b536dacc94d01cf",
+  "features": [
+    "age",
+    "sex",
+    "random_glucose",
+    "hba1c",
+    "creatinine",
+    "bun",
+    "uric_acid",
+    "alt",
+    "ast",
+    "alp",
+    "ggt",
+    "bilirubin",
+    "albumin",
+    "total_protein",
+    "platelets",
+    "wbc",
+    "neutrophils",
+    "lymphocytes",
+    "monocytes",
+    "rbc",
+    "hemoglobin",
+    "hematocrit",
+    "hdl",
+    "total_cholesterol",
+    "urine_acr"
+  ],
+  "architecture": "boosted",
+  "source_run": "nhanes_boosted_s2026_f1_d0_m1",
+  "version": "0.4.0",
+  "definition": "DIQ010 1 versus 2, borderline/refused/unknown excluded. Self-reported diagnosed diabetes, not type-2-specific or future onset.",
+  "validation_status": "exploratory_internal_retrospective_classification",
+  "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+  "evidence_limitations": [
+    "Retrospective source-cohort classification; test set previously inspected; no population screening calibration, prospective or incident-risk validation."
+  ],
+  "source_manifests": [
+    "data/raw/manifest.json"
+  ],
+  "training_coverage_q05": 0.43478260869565216,
+  "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+  "essential_rationale": "Retain existing disease-specific anchor measurements and source population restriction.",
+  "feature_engine_version": "0.3.0",
+  "outcome_label": "Self-reported physician-diagnosed diabetes (NHANES DIQ010)",
+  "longitudinal_outcome": false,
+  "clinical_screening_validated": false,
+  "operating_point_method": "validation_youden",
+  "operating_threshold": 0.09471523041143796,
+  "operating_thresholds": {
+    "sensitivity90": 0.09686525616748796,
+    "youden": 0.09471523041143796,
+    "cost_fn4_fp1": 0.2580997135963006,
+    "specificity80": 0.07286030917387679
+  },
+  "threshold_selection_partition": "original_validation_eligible_only",
+  "threshold_validation_n": 946,
+  "reporting_mode": "research_threshold"
+}

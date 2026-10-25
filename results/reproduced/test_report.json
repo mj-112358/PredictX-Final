@@ -1,0 +1,13 @@
+{
+  "baseline_tests_passed": 64,
+  "final_tests_passed": 70,
+  "dependency_warnings": 1,
+  "ruff_version": "0.17.2",
+  "lint": "passed",
+  "format": "passed",
+  "syntax": "passed",
+  "calibration_refits": "matched",
+  "model_selection": "matched",
+  "nested_model_selection": "matched",
+  "deployed_hashes": "unchanged"
+}

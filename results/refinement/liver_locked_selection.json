@@ -1,0 +1,58 @@
+{
+  "selected": "original_baseline",
+  "rule": "minimum validation calibrated log loss; replace baseline only if >=1% relative reduction",
+  "candidates": [
+    {
+      "disease": "liver",
+      "run": "original_baseline",
+      "architecture": "independent",
+      "selected": true,
+      "calibrated_validation_log_loss": 0.4904713248570096
+    },
+    {
+      "disease": "liver",
+      "run": "liver_refined_logistic_v0.4",
+      "architecture": "logistic",
+      "selected": false,
+      "candidate": 4,
+      "calibrated_validation_log_loss": 0.5453971242249199,
+      "validation_auroc": 0.7156752712308267,
+      "validation_brier": 0.1868984027574027,
+      "cv_log_loss": 0.550290061945265
+    },
+    {
+      "disease": "liver",
+      "run": "liver_refined_boosted_v0.4",
+      "architecture": "boosted",
+      "selected": false,
+      "candidate": 6,
+      "calibrated_validation_log_loss": 0.5889392630087101,
+      "validation_auroc": 0.6647961092405537,
+      "validation_brier": 0.20242139388817698,
+      "cv_log_loss": 0.5641033445276241
+    },
+    {
+      "disease": "liver",
+      "run": "liver_refined_forest_v0.4",
+      "architecture": "forest",
+      "selected": false,
+      "candidate": 9,
+      "calibrated_validation_log_loss": 0.5765387399761985,
+      "validation_auroc": 0.6842499064721288,
+      "validation_brier": 0.1995048586483282,
+      "cv_log_loss": 0.5862208586288554
+    },
+    {
+      "disease": "liver",
+      "run": "liver_refined_ensemble_v0.4",
+      "architecture": "ensemble",
+      "selected": false,
+      "candidate": 10,
+      "calibrated_validation_log_loss": 0.5737398930405002,
+      "validation_auroc": 0.6745230078563412,
+      "validation_brier": 0.2007680416185738,
+      "cv_log_loss": 0.5496125201752097
+    }
+  ],
+  "test_used_for_selection": false
+}

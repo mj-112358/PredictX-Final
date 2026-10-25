@@ -1,0 +1,60 @@
+{
+  "selection_data": "original train/validation only; no test labels",
+  "policy_rule": "Prespecified essential anchors; preserve QC/population exclusions; optional imputation as fitted; empirical range/coverage reported as uncertainty, no unsupported fixed rejection thresholds. Alternative cuts are sensitivity analyses, not safety validation.",
+  "models": {
+    "diabetes": {
+      "essential": [
+        "hba1c",
+        "random_glucose",
+        "sex"
+      ],
+      "training_coverage_q05": 0.43478260869565216,
+      "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+      "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+      "essential_rationale": "Retain existing disease-specific anchor measurements and source population restriction."
+    },
+    "kidney": {
+      "essential": [
+        "creatinine",
+        "urea"
+      ],
+      "training_coverage_q05": 0.4166666666666667,
+      "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+      "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+      "essential_rationale": "Require renal blood anchors creatinine and urea; urine variables were missing in training and remain optional under fitted imputation. This does not determine CKD chronicity."
+    },
+    "liver": {
+      "essential": [
+        "alt",
+        "ast",
+        "bilirubin",
+        "albumin"
+      ],
+      "training_coverage_q05": 1.0,
+      "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+      "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+      "essential_rationale": "Retain existing disease-specific anchor measurements and source population restriction."
+    },
+    "cardiovascular": {
+      "essential": [
+        "hdl",
+        "total_cholesterol",
+        "sex"
+      ],
+      "training_coverage_q05": 0.43478260869565216,
+      "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+      "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+      "essential_rationale": "Retain existing disease-specific anchor measurements and source population restriction."
+    },
+    "breast_cancer": {
+      "essential": [
+        "wbc",
+        "platelets"
+      ],
+      "training_coverage_q05": 0.5294117647058824,
+      "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+      "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+      "essential_rationale": "Require total WBC and platelets as routine CBC anchors. Differential counts/ratios are optional because QC masks them during both fitting and inference; invalid counts remain withheld."
+    }
+  }
+}

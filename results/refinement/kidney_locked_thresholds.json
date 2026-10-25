@@ -1,0 +1,31 @@
+{
+  "partition": "validation only; eligibility v2; test unused",
+  "thresholds": {
+    "sensitivity90": 0.9998292742493781,
+    "youden": 0.7916023173223775,
+    "cost_fn4_fp1": 0.7916023173223775,
+    "specificity80": 0.016221476383539993
+  },
+  "validation_youden": {
+    "n": 70,
+    "positive": 41,
+    "threshold": 0.7916023173223775,
+    "auroc": 1.0,
+    "auprc": 1.0000000000000002,
+    "brier": 0.0015515062033813578,
+    "log_loss": 0.01020788949135242,
+    "sensitivity": 1.0,
+    "specificity": 1.0,
+    "ppv": 1.0,
+    "npv": 1.0,
+    "referral_rate": 0.5857142857142857,
+    "tn": 29,
+    "fp": 0,
+    "fn": 0,
+    "tp": 41,
+    "net_benefit": 0.5857142857142857
+  },
+  "reporting_mode": "research_threshold",
+  "cost_assumption": "FN cost 4, FP cost 1: illustrative, not clinically established",
+  "reporting_rule": "Use research threshold only if development Youden sensitivity >=0.8 and specificity >=0.6; otherwise rank-only output"
+}

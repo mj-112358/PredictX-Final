@@ -1,0 +1,58 @@
+{
+  "selected": "original_baseline",
+  "rule": "minimum validation calibrated log loss; replace baseline only if >=1% relative reduction",
+  "candidates": [
+    {
+      "disease": "cardiovascular",
+      "run": "original_baseline",
+      "architecture": "logistic",
+      "selected": true,
+      "calibrated_validation_log_loss": 0.26496217334100763
+    },
+    {
+      "disease": "cardiovascular",
+      "run": "cardiovascular_refined_logistic_v0.4",
+      "architecture": "logistic",
+      "selected": false,
+      "candidate": 4,
+      "calibrated_validation_log_loss": 0.26668688607730845,
+      "validation_auroc": 0.81528500050984,
+      "validation_brier": 0.07921220450521221,
+      "cv_log_loss": 0.2693024041099303
+    },
+    {
+      "disease": "cardiovascular",
+      "run": "cardiovascular_refined_boosted_v0.4",
+      "architecture": "boosted",
+      "selected": false,
+      "candidate": 5,
+      "calibrated_validation_log_loss": 0.26803222420527884,
+      "validation_auroc": 0.8132864280615887,
+      "validation_brier": 0.07878626821656314,
+      "cv_log_loss": 0.26965142628784655
+    },
+    {
+      "disease": "cardiovascular",
+      "run": "cardiovascular_refined_forest_v0.4",
+      "architecture": "forest",
+      "selected": false,
+      "candidate": 9,
+      "calibrated_validation_log_loss": 0.2809170169467542,
+      "validation_auroc": 0.8000305903946161,
+      "validation_brier": 0.08109099701244556,
+      "cv_log_loss": 0.3067382844739534
+    },
+    {
+      "disease": "cardiovascular",
+      "run": "cardiovascular_refined_ensemble_v0.4",
+      "architecture": "ensemble",
+      "selected": false,
+      "candidate": 10,
+      "calibrated_validation_log_loss": 0.264346934715829,
+      "validation_auroc": 0.8181299072091364,
+      "validation_brier": 0.07833811567184178,
+      "cv_log_loss": 0.26898664276769907
+    }
+  ],
+  "test_used_for_selection": false
+}

@@ -1,0 +1,26 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+[project]
+name = "predictx-research"
+version = "0.4.0"
+description = "Integrated laboratory processing with compatibility-controlled independent model inference"
+requires-python = ">=3.11"
+dependencies = ["numpy>=1.26,<2", "pandas>=2.2,<3", "scipy>=1.11,<1.14", "scikit-learn>=1.5,<1.7", "torch>=2.2", "pydantic>=2", "fastapi", "uvicorn", "streamlit", "matplotlib", "joblib", "openpyxl", "threadpoolctl"]
+[project.optional-dependencies]
+test = ["pytest", "httpx", "ruff==0.17.2"]
+[tool.setuptools.packages.find]
+where = ["src"]
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]
+[tool.ruff.lint.per-file-ignores]
+"scripts/experiment.py" = ["E402"]
+"scripts/refine_models.py" = ["E402"]
+"scripts/benchmark_refined.py" = ["E402"]

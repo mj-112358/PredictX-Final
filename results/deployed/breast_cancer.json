@@ -1,0 +1,67 @@
+{
+  "dataset": "breast_senegal_qc",
+  "task": "breast_cancer",
+  "essential": [
+    "wbc",
+    "platelets"
+  ],
+  "min_age": 18,
+  "sex": "female",
+  "artifact": "results/deployed/breast_cancer.joblib",
+  "sha256": "10619ffed23f1c5795ecd18bf7a29a55a0e4b624fa338263308b03c54757ec67",
+  "preprocessing_signature": "a0461d260e7a5926a0b5ca46cfc63750",
+  "features": [
+    "age",
+    "crp",
+    "rbc",
+    "hemoglobin",
+    "hematocrit",
+    "mcv",
+    "mch",
+    "mchc",
+    "platelets",
+    "wbc",
+    "neutrophils",
+    "lymphocytes",
+    "monocytes",
+    "eosinophils",
+    "basophils",
+    "nlr",
+    "plr",
+    "mlr"
+  ],
+  "architecture": "boosted",
+  "source_run": "breast_senegal_qc_boosted_s2026_f1_d1_m1",
+  "version": "0.4.0",
+  "definition": "Pretreatment breast cancer (40 TNBC + 40 hormone-dependent cases) versus 40 healthy women, Senegal; clinically diagnosed case-control classification, not population screening.",
+  "validation_status": "exploratory_internal_retrospective_classification",
+  "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+  "evidence_limitations": [
+    "Retrospective source-cohort classification; test set previously inspected; no population screening calibration, prospective or incident-risk validation.",
+    "Pretreatment adult Senegalese women: diagnosed cases versus healthy controls. No external validation or paired combined CBC/metabolic-panel evidence."
+  ],
+  "source_manifests": [
+    "data/raw/breast_manifest.json"
+  ],
+  "source_files": {
+    "breast_senegal_v1.xlsx": "debd3dbc71886edf33b978892570f0cfcd4ba2538770888ba249a8028efb3132"
+  },
+  "training_coverage_q05": 0.5294117647058824,
+  "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+  "essential_rationale": "Require total WBC and platelets as routine CBC anchors. Differential counts/ratios are optional because QC masks them during both fitting and inference; invalid counts remain withheld.",
+  "feature_engine_version": "0.3.0",
+  "outcome_label": "Pretreatment source-cohort breast cancer versus healthy control (Senegal)",
+  "longitudinal_outcome": false,
+  "clinical_screening_validated": false,
+  "operating_point_method": "validation_youden",
+  "operating_threshold": 0.7831872855774439,
+  "operating_thresholds": {
+    "sensitivity90": 0.2296765160131757,
+    "youden": 0.7831872855774439,
+    "cost_fn4_fp1": 0.2203570528812132,
+    "specificity80": 0.7310698769655757
+  },
+  "threshold_selection_partition": "original_validation_eligible_only",
+  "threshold_validation_n": 24,
+  "reporting_mode": "ranking_only"
+}

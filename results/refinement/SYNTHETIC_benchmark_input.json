@@ -1,0 +1,275 @@
+{
+  "patient_id": "SYNTHETIC_ENGINEERING_FIXTURE_NOT_A_PATIENT",
+  "age": 45,
+  "equation_sex": "female",
+  "fasting_hours": 8,
+  "creatinine_idms": true,
+  "measurements": {
+    "random_glucose": {
+      "value": 100,
+      "unit": "mg/dL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "fasting_glucose": {
+      "value": 90,
+      "unit": "mg/dL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "insulin": {
+      "value": 8,
+      "unit": "uU/mL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "hba1c": {
+      "value": 5.5,
+      "unit": "%",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "creatinine": {
+      "value": 1.0,
+      "unit": "mg/dL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "urea": {
+      "value": 30,
+      "unit": "mg/dL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "bun": {
+      "value": 14,
+      "unit": "mg/dL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "uric_acid": {
+      "value": 4.5,
+      "unit": "mg/dL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "urine_specific_gravity": {
+      "value": 1.02,
+      "unit": "1",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "urine",
+      "quality": "acceptable"
+    },
+    "urine_albumin_ordinal": {
+      "value": 0,
+      "unit": "ordinal",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "urine",
+      "quality": "acceptable"
+    },
+    "urine_glucose_ordinal": {
+      "value": 0,
+      "unit": "ordinal",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "urine",
+      "quality": "acceptable"
+    },
+    "sodium": {
+      "value": 140,
+      "unit": "mmol/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "potassium": {
+      "value": 4.0,
+      "unit": "mmol/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "alt": {
+      "value": 22,
+      "unit": "U/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "ast": {
+      "value": 25,
+      "unit": "U/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "alp": {
+      "value": 85,
+      "unit": "U/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "ggt": {
+      "value": 20,
+      "unit": "U/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "bilirubin": {
+      "value": 0.7,
+      "unit": "mg/dL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "direct_bilirubin": {
+      "value": 0.2,
+      "unit": "mg/dL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "albumin": {
+      "value": 4.0,
+      "unit": "g/dL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "total_protein": {
+      "value": 7.0,
+      "unit": "g/dL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "platelets": {
+      "value": 250,
+      "unit": "10^9/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "wbc": {
+      "value": 6.0,
+      "unit": "10^9/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "neutrophils": {
+      "value": 3.5,
+      "unit": "10^9/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "lymphocytes": {
+      "value": 2.0,
+      "unit": "10^9/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "monocytes": {
+      "value": 0.4,
+      "unit": "10^9/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "eosinophils": {
+      "value": 0.08,
+      "unit": "10^9/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "basophils": {
+      "value": 0.02,
+      "unit": "10^9/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "rbc": {
+      "value": 4.5,
+      "unit": "10^12/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "hemoglobin": {
+      "value": 13,
+      "unit": "g/dL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "hematocrit": {
+      "value": 39,
+      "unit": "%",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "mcv": {
+      "value": 87,
+      "unit": "fL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "mch": {
+      "value": 29,
+      "unit": "pg",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "mchc": {
+      "value": 33,
+      "unit": "g/dL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "crp": {
+      "value": 3.0,
+      "unit": "mg/L",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "hdl": {
+      "value": 50,
+      "unit": "mg/dL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "total_cholesterol": {
+      "value": 180,
+      "unit": "mg/dL",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "serum",
+      "quality": "acceptable"
+    },
+    "urine_acr": {
+      "value": 10,
+      "unit": "mg/g",
+      "collected_at": "2026-10-25T00:00:00Z",
+      "specimen": "urine",
+      "quality": "acceptable"
+    }
+  }
+}

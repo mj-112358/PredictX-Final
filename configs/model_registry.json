@@ -1,0 +1,325 @@
+{
+  "diabetes": {
+    "dataset": "nhanes",
+    "task": "diabetes_report",
+    "essential": [
+      "hba1c",
+      "random_glucose",
+      "sex"
+    ],
+    "min_age": 20,
+    "sex": null,
+    "artifact": "results/deployed/diabetes.joblib",
+    "sha256": "ad4fe86be0bf2ea616efe89488f9b4f5640043053bbf75fb764bf05f6859306f",
+    "preprocessing_signature": "09c452f2fb65806e1b536dacc94d01cf",
+    "features": [
+      "age",
+      "sex",
+      "random_glucose",
+      "hba1c",
+      "creatinine",
+      "bun",
+      "uric_acid",
+      "alt",
+      "ast",
+      "alp",
+      "ggt",
+      "bilirubin",
+      "albumin",
+      "total_protein",
+      "platelets",
+      "wbc",
+      "neutrophils",
+      "lymphocytes",
+      "monocytes",
+      "rbc",
+      "hemoglobin",
+      "hematocrit",
+      "hdl",
+      "total_cholesterol",
+      "urine_acr"
+    ],
+    "architecture": "boosted",
+    "source_run": "nhanes_boosted_s2026_f1_d0_m1",
+    "version": "0.4.0",
+    "definition": "DIQ010 1 versus 2, borderline/refused/unknown excluded. Self-reported diagnosed diabetes, not type-2-specific or future onset.",
+    "validation_status": "exploratory_internal_retrospective_classification",
+    "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+    "evidence_limitations": [
+      "Retrospective source-cohort classification; test set previously inspected; no population screening calibration, prospective or incident-risk validation."
+    ],
+    "source_manifests": [
+      "data/raw/manifest.json"
+    ],
+    "training_coverage_q05": 0.43478260869565216,
+    "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+    "essential_rationale": "Retain existing disease-specific anchor measurements and source population restriction.",
+    "feature_engine_version": "0.3.0",
+    "outcome_label": "Self-reported physician-diagnosed diabetes (NHANES DIQ010)",
+    "longitudinal_outcome": false,
+    "clinical_screening_validated": false,
+    "operating_point_method": "validation_youden",
+    "operating_threshold": 0.09471523041143796,
+    "operating_thresholds": {
+      "sensitivity90": 0.09686525616748796,
+      "youden": 0.09471523041143796,
+      "cost_fn4_fp1": 0.2580997135963006,
+      "specificity80": 0.07286030917387679
+    },
+    "threshold_selection_partition": "original_validation_eligible_only",
+    "threshold_validation_n": 946,
+    "reporting_mode": "research_threshold"
+  },
+  "kidney": {
+    "dataset": "ckd",
+    "task": "ckd_class",
+    "essential": [
+      "creatinine",
+      "urea"
+    ],
+    "min_age": 18,
+    "sex": null,
+    "artifact": "results/deployed/kidney.joblib",
+    "sha256": "c637f224a872b2319607dbdf9f97ee067b7b24b4bd18982b6c62c24826681bc9",
+    "preprocessing_signature": "f07550075cf1e525963073280139a128",
+    "features": [
+      "age",
+      "random_glucose",
+      "urea",
+      "creatinine",
+      "sodium",
+      "potassium",
+      "hemoglobin",
+      "hematocrit",
+      "wbc_cells",
+      "rbc",
+      "urine_specific_gravity",
+      "urine_albumin_ordinal",
+      "urine_glucose_ordinal"
+    ],
+    "architecture": "boosted",
+    "source_run": "ckd_boosted_s2026_f1_d0_m1",
+    "version": "0.4.0",
+    "definition": "UCI hospital CKD class. No adjudicated chronicity or stage; includes biomarkers used in diagnosis. Excludes comorbidity labels, symptoms and disease-history features.",
+    "validation_status": "exploratory_internal_retrospective_classification",
+    "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+    "evidence_limitations": [
+      "Retrospective source-cohort classification; test set previously inspected; no population screening calibration, prospective or incident-risk validation."
+    ],
+    "source_manifests": [
+      "data/raw/manifest.json"
+    ],
+    "training_coverage_q05": 0.4166666666666667,
+    "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+    "essential_rationale": "Require renal blood anchors creatinine and urea; urine variables were missing in training and remain optional under fitted imputation. This does not determine CKD chronicity.",
+    "feature_engine_version": "0.3.0",
+    "outcome_label": "UCI CKD dataset class",
+    "longitudinal_outcome": false,
+    "clinical_screening_validated": false,
+    "operating_point_method": "validation_youden",
+    "operating_threshold": 0.7916023173223775,
+    "operating_thresholds": {
+      "sensitivity90": 0.9998292742493781,
+      "youden": 0.7916023173223775,
+      "cost_fn4_fp1": 0.7916023173223775,
+      "specificity80": 0.016221476383539993
+    },
+    "threshold_selection_partition": "original_validation_eligible_only",
+    "threshold_validation_n": 70,
+    "reporting_mode": "research_threshold"
+  },
+  "liver": {
+    "dataset": "ilpd",
+    "task": "liver_class",
+    "essential": [
+      "alt",
+      "ast",
+      "bilirubin",
+      "albumin"
+    ],
+    "min_age": 18,
+    "sex": null,
+    "artifact": "results/deployed/liver.joblib",
+    "sha256": "e6046156866e025345a38f2d30ddf5ab1f716fdfa49966bf0bc0554a2e65899d",
+    "preprocessing_signature": "de2e65a01ed0371fd59d05ef0f3bf1ba",
+    "features": [
+      "age",
+      "sex",
+      "bilirubin",
+      "direct_bilirubin",
+      "alp",
+      "alt",
+      "ast",
+      "total_protein",
+      "albumin"
+    ],
+    "architecture": "independent",
+    "source_run": "ilpd_independent_s2026_f1_d0_m1",
+    "version": "0.4.0",
+    "definition": "Selector 1: liver patient; 2: non-liver patient. Heterogeneous disease, no fibrosis stage.",
+    "validation_status": "exploratory_internal_retrospective_classification",
+    "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+    "evidence_limitations": [
+      "Retrospective source-cohort classification; test set previously inspected; no population screening calibration, prospective or incident-risk validation."
+    ],
+    "source_manifests": [
+      "data/raw/manifest.json"
+    ],
+    "training_coverage_q05": 1.0,
+    "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+    "essential_rationale": "Retain existing disease-specific anchor measurements and source population restriction.",
+    "feature_engine_version": "0.3.0",
+    "outcome_label": "ILPD liver-patient class",
+    "longitudinal_outcome": false,
+    "clinical_screening_validated": false,
+    "operating_point_method": "validation_youden",
+    "operating_threshold": 0.697821534561163,
+    "operating_thresholds": {
+      "sensitivity90": 0.44493556020461517,
+      "youden": 0.697821534561163,
+      "cost_fn4_fp1": 0.3949820237780097,
+      "specificity80": 0.6843197785196763
+    },
+    "threshold_selection_partition": "original_validation_eligible_only",
+    "threshold_validation_n": 110,
+    "reporting_mode": "ranking_only"
+  },
+  "cardiovascular": {
+    "dataset": "nhanes",
+    "task": "cvd_report",
+    "essential": [
+      "hdl",
+      "total_cholesterol",
+      "sex"
+    ],
+    "min_age": 20,
+    "sex": null,
+    "artifact": "results/deployed/cardiovascular.joblib",
+    "sha256": "bb0c225f8f1bff432e6eef3d58c5431be4db0792a4160b4c32463745c4a82ba6",
+    "preprocessing_signature": "09c452f2fb65806e1b536dacc94d01cf",
+    "features": [
+      "age",
+      "sex",
+      "random_glucose",
+      "hba1c",
+      "creatinine",
+      "bun",
+      "uric_acid",
+      "alt",
+      "ast",
+      "alp",
+      "ggt",
+      "bilirubin",
+      "albumin",
+      "total_protein",
+      "platelets",
+      "wbc",
+      "neutrophils",
+      "lymphocytes",
+      "monocytes",
+      "rbc",
+      "hemoglobin",
+      "hematocrit",
+      "hdl",
+      "total_cholesterol",
+      "urine_acr"
+    ],
+    "architecture": "logistic",
+    "source_run": "nhanes_logistic_s2026_f1_d0_m1",
+    "version": "0.4.0",
+    "definition": "Any MCQ160C/E/F=1 (ever CHD/MI/stroke), negative only if all three=2. Self-reported prevalent cardiovascular history.",
+    "validation_status": "exploratory_internal_retrospective_classification",
+    "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+    "evidence_limitations": [
+      "Retrospective source-cohort classification; test set previously inspected; no population screening calibration, prospective or incident-risk validation."
+    ],
+    "source_manifests": [
+      "data/raw/manifest.json"
+    ],
+    "training_coverage_q05": 0.43478260869565216,
+    "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+    "essential_rationale": "Retain existing disease-specific anchor measurements and source population restriction.",
+    "feature_engine_version": "0.3.0",
+    "outcome_label": "Self-reported cardiovascular history (NHANES CHD/MI/stroke)",
+    "longitudinal_outcome": false,
+    "clinical_screening_validated": false,
+    "operating_point_method": "validation_youden",
+    "operating_threshold": 0.10095017356347237,
+    "operating_thresholds": {
+      "sensitivity90": 0.0656167391670322,
+      "youden": 0.10095017356347237,
+      "cost_fn4_fp1": 0.17451158912454975,
+      "specificity80": 0.1512179011943394
+    },
+    "threshold_selection_partition": "original_validation_eligible_only",
+    "threshold_validation_n": 982,
+    "reporting_mode": "research_threshold"
+  },
+  "breast_cancer": {
+    "dataset": "breast_senegal_qc",
+    "task": "breast_cancer",
+    "essential": [
+      "wbc",
+      "platelets"
+    ],
+    "min_age": 18,
+    "sex": "female",
+    "artifact": "results/deployed/breast_cancer.joblib",
+    "sha256": "10619ffed23f1c5795ecd18bf7a29a55a0e4b624fa338263308b03c54757ec67",
+    "preprocessing_signature": "a0461d260e7a5926a0b5ca46cfc63750",
+    "features": [
+      "age",
+      "crp",
+      "rbc",
+      "hemoglobin",
+      "hematocrit",
+      "mcv",
+      "mch",
+      "mchc",
+      "platelets",
+      "wbc",
+      "neutrophils",
+      "lymphocytes",
+      "monocytes",
+      "eosinophils",
+      "basophils",
+      "nlr",
+      "plr",
+      "mlr"
+    ],
+    "architecture": "boosted",
+    "source_run": "breast_senegal_qc_boosted_s2026_f1_d1_m1",
+    "version": "0.4.0",
+    "definition": "Pretreatment breast cancer (40 TNBC + 40 hormone-dependent cases) versus 40 healthy women, Senegal; clinically diagnosed case-control classification, not population screening.",
+    "validation_status": "exploratory_internal_retrospective_classification",
+    "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+    "evidence_limitations": [
+      "Retrospective source-cohort classification; test set previously inspected; no population screening calibration, prospective or incident-risk validation.",
+      "Pretreatment adult Senegalese women: diagnosed cases versus healthy controls. No external validation or paired combined CBC/metabolic-panel evidence."
+    ],
+    "source_manifests": [
+      "data/raw/breast_manifest.json"
+    ],
+    "source_files": {
+      "breast_senegal_v1.xlsx": "debd3dbc71886edf33b978892570f0cfcd4ba2538770888ba249a8028efb3132"
+    },
+    "training_coverage_q05": 0.5294117647058824,
+    "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+    "essential_rationale": "Require total WBC and platelets as routine CBC anchors. Differential counts/ratios are optional because QC masks them during both fitting and inference; invalid counts remain withheld.",
+    "feature_engine_version": "0.3.0",
+    "outcome_label": "Pretreatment source-cohort breast cancer versus healthy control (Senegal)",
+    "longitudinal_outcome": false,
+    "clinical_screening_validated": false,
+    "operating_point_method": "validation_youden",
+    "operating_threshold": 0.7831872855774439,
+    "operating_thresholds": {
+      "sensitivity90": 0.2296765160131757,
+      "youden": 0.7831872855774439,
+      "cost_fn4_fp1": 0.2203570528812132,
+      "specificity80": 0.7310698769655757
+    },
+    "threshold_selection_partition": "original_validation_eligible_only",
+    "threshold_validation_n": 24,
+    "reporting_mode": "ranking_only"
+  }
+}

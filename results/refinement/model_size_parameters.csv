@@ -1,0 +1,6 @@
+disease,artifact_bytes,learned_scalar_count,parameter_definition,sha256
+diabetes,170128,701,boosting leaf prediction values plus baseline; split thresholds/bins not counted as trainable coefficients,ad4fe86be0bf2ea616efe89488f9b4f5640043053bbf75fb764bf05f6859306f
+kidney,77347,396,boosting leaf prediction values plus baseline; split thresholds/bins not counted as trainable coefficients,c637f224a872b2319607dbdf9f97ee067b7b24b4bd18982b6c62c24826681bc9
+liver,22726,1729,"all neural learned scalar parameters, excluding preprocessing/calibrator",e6046156866e025345a38f2d30ddf5ab1f716fdfa49966bf0bc0554a2e65899d
+cardiovascular,49665,52,"classifier coefficients and intercept, excluding preprocessing/calibrator",bb0c225f8f1bff432e6eef3d58c5431be4db0792a4160b4c32463745c4a82ba6
+breast_cancer,54438,201,boosting leaf prediction values plus baseline; split thresholds/bins not counted as trainable coefficients,10619ffed23f1c5795ecd18bf7a29a55a0e4b624fa338263308b03c54757ec67

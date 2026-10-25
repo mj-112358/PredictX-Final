@@ -1,0 +1,86 @@
+[
+  {
+    "file": "ilpd.zip",
+    "url": "https://archive.ics.uci.edu/static/public/225/ilpd+indian+liver+patient+dataset.zip",
+    "sha256": "60e18fbfe7f84daf58c178ea280ba5fe8db7e2507aabce01b57425b3b822cf0b",
+    "bytes": 23931,
+    "status": "downloaded"
+  },
+  {
+    "file": "ckd.csv",
+    "url": "https://archive.ics.uci.edu/static/public/336/data.csv",
+    "sha256": "0eeea8d17f5ad8792d854999d6ddf1602ec4e116616f6ccdfdaef0ba8109e694",
+    "bytes": 45092,
+    "status": "downloaded"
+  },
+  {
+    "file": "DEMO_J.xpt",
+    "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/DEMO_J.xpt",
+    "sha256": "c0b46e0345ea19404928656277c8b0d10b0cca348a9b2fe4fc3c67e8b7ee73ec",
+    "bytes": 3412720,
+    "status": "downloaded"
+  },
+  {
+    "file": "BIOPRO_J.xpt",
+    "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/BIOPRO_J.xpt",
+    "sha256": "5bcd5722c1892883b96a9d7fed0befadabacae313f800fadc0133cd5dd00c4c6",
+    "bytes": 2106080,
+    "status": "downloaded"
+  },
+  {
+    "file": "CBC_J.xpt",
+    "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/CBC_J.xpt",
+    "sha256": "00f964098dc91272e415344554cbf1b627ecaeb2eda201518527446a7d81e742",
+    "bytes": 1476320,
+    "status": "downloaded"
+  },
+  {
+    "file": "GHB_J.xpt",
+    "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/GHB_J.xpt",
+    "sha256": "35f07094573a0061a03ed609a5a363b34eb1b1c7065d1623b43d72e132a8a654",
+    "bytes": 103520,
+    "status": "downloaded"
+  },
+  {
+    "file": "HDL_J.xpt",
+    "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/HDL_J.xpt",
+    "sha256": "9f4eb41b89f0c9f3d6262f873e671eeb2f2eb40581a8426b2a3c8fd4fc19439e",
+    "bytes": 179680,
+    "status": "downloaded"
+  },
+  {
+    "file": "TCHOL_J.xpt",
+    "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/TCHOL_J.xpt",
+    "sha256": "0291a6a4f6d82dac8392c8c992b519946824dfeda01647935520cf506ed9f4ab",
+    "bytes": 179680,
+    "status": "downloaded"
+  },
+  {
+    "file": "ALB_CR_J.xpt",
+    "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/ALB_CR_J.xpt",
+    "sha256": "0017a7b8d87d29009923e22300b4ec393b06c9bbf6147eb6b2d777aca605bcbf",
+    "bytes": 509760,
+    "status": "downloaded"
+  },
+  {
+    "file": "MCQ_J.xpt",
+    "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/MCQ_J.xpt",
+    "sha256": "79c50c805a377fcd61d44fae8b86a16af0a5741f8b1aeebda918d7d743c68f98",
+    "bytes": 5420800,
+    "status": "downloaded"
+  },
+  {
+    "file": "DIQ_J.xpt",
+    "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/DIQ_J.xpt",
+    "sha256": "1ecbf5360dfc331d1efbf32198553dc30e9a1f4cff0a907ed30ca72bac797f89",
+    "bytes": 3851840,
+    "status": "downloaded"
+  },
+  {
+    "file": "KIQ_U_J.xpt",
+    "url": "https://wwwn.cdc.gov/Nchs/Data/Nhanes/Public/2017/DataFiles/KIQ_U_J.xpt",
+    "sha256": "f17684e9e4175465be07fd03e71ccfbf8acab799c94acd576748d3e7fd8858b5",
+    "bytes": 715840,
+    "status": "downloaded"
+  }
+]

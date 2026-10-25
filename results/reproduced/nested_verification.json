@@ -1,0 +1,20 @@
+{
+  "nested_inner_cv.csv": {
+    "rows": 22,
+    "numerical_match": true
+  },
+  "nested_outer_cv.csv": {
+    "rows": 6,
+    "numerical_match": true
+  },
+  "model_development_selection.csv": {
+    "rows": 10,
+    "numerical_match": true
+  },
+  "liver": {
+    "selection": "original_baseline"
+  },
+  "cardiovascular": {
+    "selection": "original_baseline"
+  }
+}

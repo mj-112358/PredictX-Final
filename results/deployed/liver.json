@@ -1,0 +1,56 @@
+{
+  "dataset": "ilpd",
+  "task": "liver_class",
+  "essential": [
+    "alt",
+    "ast",
+    "bilirubin",
+    "albumin"
+  ],
+  "min_age": 18,
+  "sex": null,
+  "artifact": "results/deployed/liver.joblib",
+  "sha256": "e6046156866e025345a38f2d30ddf5ab1f716fdfa49966bf0bc0554a2e65899d",
+  "preprocessing_signature": "de2e65a01ed0371fd59d05ef0f3bf1ba",
+  "features": [
+    "age",
+    "sex",
+    "bilirubin",
+    "direct_bilirubin",
+    "alp",
+    "alt",
+    "ast",
+    "total_protein",
+    "albumin"
+  ],
+  "architecture": "independent",
+  "source_run": "ilpd_independent_s2026_f1_d0_m1",
+  "version": "0.4.0",
+  "definition": "Selector 1: liver patient; 2: non-liver patient. Heterogeneous disease, no fibrosis stage.",
+  "validation_status": "exploratory_internal_retrospective_classification",
+  "gate_status": "Research input contract; optional imputation and empirical support warnings; not clinically validated",
+  "evidence_limitations": [
+    "Retrospective source-cohort classification; test set previously inspected; no population screening calibration, prospective or incident-risk validation."
+  ],
+  "source_manifests": [
+    "data/raw/manifest.json"
+  ],
+  "training_coverage_q05": 1.0,
+  "eligibility_policy": "v2_anchor_inputs_optional_imputation",
+  "essential_rationale": "Retain existing disease-specific anchor measurements and source population restriction.",
+  "feature_engine_version": "0.3.0",
+  "outcome_label": "ILPD liver-patient class",
+  "longitudinal_outcome": false,
+  "clinical_screening_validated": false,
+  "operating_point_method": "validation_youden",
+  "operating_threshold": 0.697821534561163,
+  "operating_thresholds": {
+    "sensitivity90": 0.44493556020461517,
+    "youden": 0.697821534561163,
+    "cost_fn4_fp1": 0.3949820237780097,
+    "specificity80": 0.6843197785196763
+  },
+  "threshold_selection_partition": "original_validation_eligible_only",
+  "threshold_validation_n": 110,
+  "reporting_mode": "ranking_only"
+}
