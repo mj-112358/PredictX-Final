@@ -22,7 +22,7 @@ Calibration reconstruction is checked against the mean regularized logistic-loss
 
 ## Operating points and evaluation
 
-Validation records satisfying the input contract determine Youden, sensitivity-90%, specificity-80% and illustrative FN:FP cost 4:1 operating points. The registry uses the validation Youden threshold. Binary reporting requires validation sensitivity ≥0.8 and specificity ≥0.6; liver and breast assessments use ranking mode under this rule.
+Validation records satisfying the input contract determine Youden, sensitivity-90%, specificity-80% and illustrative FN:FP cost 4:1 operating points. The registry uses the validation Youden threshold. Threshold reconstruction uses the score-parity precision and verifies the retained validation confusion counts exactly. Binary reporting requires validation sensitivity ≥0.8 and specificity ≥0.6; liver and breast assessments use ranking mode under this rule.
 
 The component metrics use all labeled test records. Runtime coverage separately counts eligible records, scored true/false positives and negatives, and abstained positive/negative records. `scripts/evaluate.py` reconstructs canonical source records and verifies every eligible test score against the inference function. Source assay quality, collection timing and acute-illness metadata are accepted assumptions in this retrospective reconstruction. CKD canonical validity processing changes a few component scores slightly; the retained canonical reference predictions and their measured metrics define the patent comparison.
 

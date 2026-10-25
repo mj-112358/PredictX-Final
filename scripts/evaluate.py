@@ -108,8 +108,20 @@ def evaluate_models(output: Path) -> pd.DataFrame:
             ]
         )
         validation = validation[eligible[validation]]
-        chosen = thresholds(labels[validation], bundle.predict_proba(frame.iloc[validation])[:, 0])
-        np.testing.assert_allclose(chosen["youden"], cfg["operating_threshold"], rtol=1e-10)
+        validation_probability = bundle.predict_proba(frame.iloc[validation])[:, 0]
+        chosen = thresholds(labels[validation], validation_probability)
+        np.testing.assert_allclose(
+            chosen["youden"], cfg["operating_threshold"], rtol=1e-6, atol=1e-7
+        )
+        retained = json.loads(
+            (ROOT / f"results/refinement/{disease}_locked_thresholds.json").read_text()
+        )
+        validation_metrics = metrics(labels[validation], validation_probability, chosen["youden"])
+        for field in ["n", "positive", "tp", "tn", "fp", "fn"]:
+            assert validation_metrics[field] == retained["validation_youden"][field], (
+                disease,
+                field,
+            )
         probability = bundle.predict_proba(frame.iloc[test])[:, 0]
         saved = pd.read_csv(
             ROOT / f"results/refinement/{disease}_test_predictions.csv", dtype={"record_id": str}
@@ -177,6 +189,10 @@ def evaluate_models(output: Path) -> pd.DataFrame:
                 "training_preprocessing_verified": True,
                 "calibration_refit_verified": True,
                 "calibration_audit": calibration_audit,
+                "threshold_reconstruction_absolute_delta": abs(
+                    chosen["youden"] - cfg["operating_threshold"]
+                ),
+                "validation_confusion_counts_verified": True,
                 "runtime_parity_verified": True,
             }
         )
