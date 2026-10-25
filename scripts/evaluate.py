@@ -16,7 +16,13 @@ from sklearn.preprocessing import StandardScaler
 from predictx.breast_data import breast_senegal
 from predictx.cohort_runtime import LOADERS_ACTIVE, canonical_frame
 from predictx.data import ROOT, derived
-from predictx.evaluation import assert_disjoint, audit_sigmoid_calibration, bootstrap, metrics
+from predictx.evaluation import (
+    assert_disjoint,
+    audit_sigmoid_calibration,
+    bootstrap,
+    metrics,
+    sensitivity_threshold,
+)
 from predictx.inference import assess, load_model, registry
 from predictx.research_metrics import coverage_metrics, thresholds
 from predictx.runtime import scalar_scores
@@ -29,8 +35,13 @@ def verify_calibration(bundle, cohort, source, indices, task):
 
 
 def verify_candidate_selection(output: Path) -> None:
-    reference = pd.read_csv(ROOT / "results/independent/architecture_selection.csv")
+    reference = pd.read_csv(
+        ROOT / "results/independent/architecture_selection.csv", float_precision="round_trip"
+    )
     rows = []
+    target = json.loads((ROOT / "configs/experiment.json").read_text())[
+        "sensitivity_development_target"
+    ]
     for disease, cfg in registry().items():
         cohort = LOADERS_ACTIVE[cfg["dataset"]]()
         frame = derived(cohort.X) if disease == "breast_cancer" else cohort.X
@@ -48,7 +59,16 @@ def verify_candidate_selection(output: Path) -> None:
                 and pd.notna(cohort.y.iloc[i][cfg["task"]])
             ]
             p = bundle.predict_proba(frame.iloc[indices])[:, index]
-            result = metrics(cohort.y[cfg["task"]].iloc[indices], p, bundle.thresholds[index])
+            labels = cohort.y[cfg["task"]].iloc[indices]
+            reconstructed_threshold = sensitivity_threshold(labels, p, target)
+            np.testing.assert_allclose(
+                reconstructed_threshold, bundle.thresholds[index], rtol=1e-6, atol=1e-7
+            )
+            np.testing.assert_equal(bundle.thresholds[index], candidate["validation_threshold"])
+            result = metrics(labels, p, reconstructed_threshold)
+            boundary_changes = np.count_nonzero(
+                (p >= reconstructed_threshold) != (p >= bundle.thresholds[index])
+            )
             np.testing.assert_allclose(
                 result["log_loss"], candidate["validation_log_loss"], rtol=1e-6, atol=1e-7
             )
@@ -73,6 +93,10 @@ def verify_candidate_selection(output: Path) -> None:
                     ),
                     "brier_absolute_delta": abs(result["brier"] - candidate["validation_brier"]),
                     "validation_confusion_counts_verified": True,
+                    "threshold_reconstruction_absolute_delta": abs(
+                        reconstructed_threshold - bundle.thresholds[index]
+                    ),
+                    "stored_threshold_boundary_changes": int(boundary_changes),
                 }
             )
         assert min(scores)[2] == cfg["source_run"]
