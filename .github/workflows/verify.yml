@@ -22,9 +22,33 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.lock.txt
           python -m pip install --no-deps -e '.[test]'
+      - name: Verify installed environment
+        run: |
+          python -m pip check
+          mkdir -p results/ci
+          python -VV > results/ci/python.txt
+          python -m pip list --format=json > results/ci/packages.json
       - name: Verify research suite
-        run: python -m pytest -q
+        run: python -m pytest -q --junitxml=results/ci/pytest.xml
       - name: Check source formatting
         run: |
           python -m ruff check src scripts tests demo
           python -m ruff format --check src scripts tests demo
+      - name: Reproduce saved-model evaluation
+        run: python scripts/evaluate.py
+      - name: Reproduce computational measurements
+        run: |
+          python scripts/benchmark_refined.py
+          python scripts/benchmark_model_loading.py
+      - name: Verify retained research assets
+        run: git diff --exit-code -- data/raw configs/model_registry.json results/deployed results/models results/independent results/refinement
+      - name: Save verification outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-verification-${{ github.sha }}
+          path: |
+            results/ci/
+            results/reproduced/evaluation/
+            results/reproduced/benchmarks/
+            results/reproduced/model_loading/
+          if-no-files-found: error
